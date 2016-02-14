@@ -22,12 +22,12 @@ public class GeneratorQRCode {
     private static final String ENCODING = "UTF-8";
 
     public static void main(String[] args) {
-        String baseStr = getBase64("北京微昂科技有限公司");
+        String baseStr = getBase64("北京微昂科技有限公司111");
         System.out.println("encode:"+baseStr);
         System.out.println(getFromBase64(baseStr));
 
 
-        createQRCode("D:/dist", "QR.png", baseStr, 125);
+        createQRCode("D:/dist", "QR.png", "北京微昂科技有限公司111", 125);
     }
 
 
