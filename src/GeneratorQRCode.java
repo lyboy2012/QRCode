@@ -1,6 +1,7 @@
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
@@ -12,6 +13,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Hashtable;
 
@@ -61,6 +63,12 @@ public class GeneratorQRCode {
 
             BitMatrix byteMatrix = qrCodeWriter.encode(content, BarcodeFormat.QR_CODE, size, size, hintMap);
 
+
+           // MatrixToImageWriter.writeToStream(byteMatrix, "PNG", response.getOutputStream());
+           // response.getOutputStream().flush();
+
+            //若果以输出流的方式返回可以放开上面注释，注释掉以下内容通过response 作为写入留输出既可
+
             int width = byteMatrix.getWidth();
 
             BufferedImage image = new BufferedImage(width, width,
@@ -108,6 +116,7 @@ public class GeneratorQRCode {
         }
         return true;
     }
+
 
     public static String getBase64(String str) {
         byte[] b = null;
